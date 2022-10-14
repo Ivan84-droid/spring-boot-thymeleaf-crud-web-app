@@ -5,42 +5,42 @@ import net.javaguides.springboot.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-// Musi byt anotacia Controller, aby sa vedel spustit
     @Controller
     public class EmployeeController {
 
-    // premenna EmployeeService je interface, nie trieda
-    // skusal som aj EmployeeServiceImpl a slo to
-    @Autowired
-    private EmployeeServiceImpl employeeService;
+        @Autowired
+        private EmployeeServiceImpl employeeService;
 
-    // display list of employees
-    // GetMapping odkazuje na hlavnu webovu stranku, teda /
-    @GetMapping("/")
-    public String viewHomePage(Model model) {
-        // listEmployees je vlastne to, co sa zobrazi index.html v resources/templates
-        // v prikaze <tr th:each="employee:${listEmployees}">
-        model.addAttribute("listEmployees", employeeService.getAllEmployees());
-        // return "index" sa odkazuje na subor index.html
-        return "index";
-    }
+        @GetMapping("/")
+        public String viewHomePage(Model model) {
+            model.addAttribute("listEmployees", employeeService.getAllEmployees());
+            return "index";
+        }
 
-    @GetMapping("/showNewEmployeeForm")
-    public String showNewEmployeeForm(Model model) {
-        // create model attribute to bind form data
-        Empolyee employee = new Empolyee();
-        model.addAttribute("employee", employee);
-        return "new_employee";
-    }
-    @PostMapping("/saveEmployee")
-    // koresponduje s <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" v subore new_employee.html
-    public String saveEmployee(@ModelAttribute("employee") Empolyee employee) {
-        employeeService.saveEmployee(employee);
-        return "redirect:/";
-    }
-}
+        @GetMapping("/showNewEmployeeForm")
+        public String showNewEmployeeForm(Model model) {
+            Empolyee employee = new Empolyee();
+            model.addAttribute("employee", employee);
+            return "new_employee";
+        }
+
+        @PostMapping("/saveEmployee")
+        public String saveEmployee(@ModelAttribute("employee") Empolyee employee) {
+            employeeService.saveEmployee(employee);
+            return "redirect:/";
+        }
+        @GetMapping("/showFormForUpdate/{id}")
+        public String showFormForUpdate(@PathVariable(value = "id") long userid, Model model) {
+            Empolyee empolyee = employeeService.getEmployeeById(userid);
+            model.addAttribute("employee", empolyee);
+            return "update_employee";
+        }
+        @GetMapping("/deleteEmployee/{id}")
+        public String deleteEmployee(@PathVariable(value = "id") long id){
+            this.employeeService.deleteEmployeeById(id);
+                return "redirect/";
+            }
+        }
 
