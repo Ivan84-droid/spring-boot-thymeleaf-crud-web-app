@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.*;
         @GetMapping("/deleteEmployee/{id}")
         public String deleteEmployee(@PathVariable(value = "id") long id){
             this.employeeService.deleteEmployeeById(id);
-                return "redirect/";
+            return "redirect:/";
             }
         }
 
