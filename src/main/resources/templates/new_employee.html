@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
     <meta charset="UTF-8">
     <title>Employee Management System</title>
     <link rel="stylesheet"
@@ -8,7 +7,7 @@
           integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
 </tr>
 <body>
-<div class="container">
+<div class="container p-3 my-3 bg-dark text-white">
     <h1>Employee Management System</h1>
     <hr>
     <h2>Save Employee</h2>
@@ -43,7 +42,7 @@
 
     <hr>
 
-    <a th:href = "@{/}"> Back to Employee List</a>
+    <a class="text-danger" th:href = "@{/}"> Back to Employee List</a>
 </div>
 </body>
 </html>
