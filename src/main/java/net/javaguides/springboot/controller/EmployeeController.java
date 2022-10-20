@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
         @Autowired
         private EmployeeService employeeService;
         @Autowired
-        CompanyService companyService;
+        private CompanyService companyService;
         @GetMapping("/")
         public String viewHomePage(Model model) {
             model.addAttribute("listEmployees", employeeService.getAllEmployees());
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
             return "new_employee";
         }
         @GetMapping ("/showNewCompanyForm")
-                public String showNewCompany (Model model){
+                public String showNewCompanyForm (Model model){
             Company company = new Company();
             model.addAttribute ("company", company);
             return "new_company";
@@ -47,6 +47,7 @@ import org.springframework.web.bind.annotation.*;
         public String showFormForUpdate(@PathVariable(value = "id") long userid, Model model) {
             Employee employee = employeeService.getEmployeeById(userid);
             model.addAttribute("employee", employee);
+            model.addAttribute("company", companyService.getAllCompanies());
             return "update_employee";
         }
         @GetMapping("/deleteEmployee/{id}")
