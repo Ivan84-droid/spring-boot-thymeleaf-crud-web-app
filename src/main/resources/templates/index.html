@@ -6,7 +6,6 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css"
           integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
-
 <script>
     function openPopup(id){
         let confirmAction = confirm("Are you sure to delete this employee?");
@@ -15,10 +14,14 @@
         }
     }
 </script>
+
 </head>
 <body>
-    <div class="container">
-        <h1>List of all employees</h1>
+<div class="container text-center">
+    <h3>List of all employees</h3>
+    <p><em>First project of me!</em></p>
+    <p>I hope, that you like it, so i will always make it better!!!!!</p>
+</div>
         <a th:href="@{/showNewEmployeeForm}" button type="button" class="btn btn-info"> Add employee </a>
         <a th:href="@{/showNewCompanyForm}" button type="button" class="btn btn-info"> Add company </a>
         <table border="2" class="table table-striped">
@@ -46,8 +49,9 @@
                 <td th:text="${employee.age}"></td>
                 <td th:text="${#dates.format(employee.recruitment, 'dd-MM-yyyy')}"></td>
                 <td th:text="${employee.email}"></td>
+                <td ></td>
                 <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
-                    <a th:attr="onclick=|openPopup('${employee.id}')|">Delete</a>
+                    <a th:attr="onclick=|openPopup('${employee.id}')|"class="btn btn-primary btn-sm mb-3">Delete</a>
                 </td>
             </tr>
             </tbody>
