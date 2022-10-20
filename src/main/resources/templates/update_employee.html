@@ -13,22 +13,17 @@
     <hr>
     <h2>Update Employee</h2>
 
-    <form action="#" method="POST" th:action="@{/saveEmployee}"
-          th:object="${employee}">
+    <form action="#" method="POST" th:action="@{/saveEmployee}" th:object="${employee}">
 
-        <!-- Add hidden form field to handle update -->
         <input th:field="*{id}" type="hidden"/>
-        <th> Krstné meno zamestnanca</th>
-        <input class="form-control mb-4 col-4" th:field="*{firstName}" type="text">
-        <th> Priezvisko zamestnanca</th>
+        <input class="form-control mb-4 col-4" th:field="*{academicDegree}" type="text">
         <input class="form-control mb-4 col-4" th:field="*{lastName}" type="text">
-        <th> Email zamestnanca</th>
+        <input class="form-control mb-4 col-4" th:field="*{postgraduateDegree}" type="text">
+        <input class="form-control mb-4 col-4" th:field="*{company.name}" type="text">
+        <input class="form-control mb-4 col-4" th:field="*{workPosition}" type="text">
+        <input class="form-control mb-4 col-4" th:field="*{age}" type="text">
+        <input class="form-control mb-4 col-4" th:field="*{recruitment}" type="text">
         <input class="form-control mb-4 col-4" th:field="*{email}" type="text">
-        <th> Zamestnávateľ </th>
-        <input class="form-control mb-4 col-4" th:field="*{employer}" type="text">
-
-        </select>
-
         <button class="btn btn-info col-2" type="submit"> Update Employee</button>
 
     </form>
