@@ -4,7 +4,6 @@ import net.javaguides.springboot.model.Company;
 import net.javaguides.springboot.model.Employee;
 import net.javaguides.springboot.service.CompanyService;
 import net.javaguides.springboot.service.EmployeeService;
-import net.javaguides.springboot.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +13,8 @@ import org.springframework.web.bind.annotation.*;
     public class EmployeeController {
         @Autowired
         private EmployeeService employeeService;
-
         @Autowired
         CompanyService companyService;
-
         @GetMapping("/")
         public String viewHomePage(Model model) {
             model.addAttribute("listEmployees", employeeService.getAllEmployees());
@@ -30,20 +27,17 @@ import org.springframework.web.bind.annotation.*;
             model.addAttribute("company", companyService.getAllCompanies() );
             return "new_employee";
         }
-
         @GetMapping ("/showNewCompanyForm")
                 public String showNewCompany (Model model){
             Company company = new Company();
             model.addAttribute ("company", company);
             return "new_company";
-
         }
         @PostMapping ("/saveCompany")
         public String saveCompany (@ModelAttribute ("company")Company company){
             companyService.saveCompany(company);
             return "redirect:/";
         }
-
         @PostMapping("/saveEmployee")
         public String saveEmployee(@ModelAttribute("employee") Employee employee) {
             employeeService.saveEmployee(employee);

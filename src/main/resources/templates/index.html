@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Management System</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css"
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css"
           integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
 
-</head>
+
 <script>
     function openPopup(id){
         let confirmAction = confirm("Are you sure to delete this employee?");
@@ -15,6 +16,7 @@
         }
     }
 </script>
+</head>
 <body>
     <div class="container my-2">
         <h1>Zoznam všetkých zamestnancov</h1>
@@ -47,7 +49,7 @@
                 <td th:text="${#dates.format(employee.recruitment, 'dd-MM-yyyy')}"></td>
                 <td th:text="${employee.email}"></td>
                 <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
-                    <a class="btn btn-danger btn-sm mb-3" th:attr="onclick=|openPopup('${employee.id}')|">Delete</a>
+                    <a th:attr="onclick=|openPopup('${employee.id}')|">Delete</a>
                 </td>
             </tr>
             </tbody>

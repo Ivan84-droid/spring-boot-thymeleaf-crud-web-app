@@ -11,27 +11,18 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "title")
-    private String title;
+    @Column(name = "academic_degree")
+    private String academicDegree;
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "employer")
-    private String employer;
-
-    @Column(name = "age")
-    private String age;
-
-    @Column(name = "academic_degree")
-    private String academicDegree;
-
     @Column(name = "postgraduate_degree")
     private String postgraduateDegree;
-
+    @Column(name = "email")
+    private String email;
+    @Column(name = "age")
+    private String age;
     @Column(name = "work_position")
     private String workPosition;
 
@@ -41,23 +32,14 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
 
-    @Column(name = "company")
-    private String company;
+    private Company company;
 
-    public String getCompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Company company) {
         this.company = company;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAge() {
@@ -130,14 +112,7 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
-    }
 
-    public String getEmployer() {
-        return employer;
-    }
-
-    public void setEmployer(String employer) {
-        this.employer = employer;
     }
 }
 
