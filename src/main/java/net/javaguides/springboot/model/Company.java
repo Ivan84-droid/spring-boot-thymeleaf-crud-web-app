@@ -12,7 +12,11 @@ public class Company {
     @Column (name="name")
     private String name;
 
-
+    @OneToMany(
+        mappedBy = "company", fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL
+)
+    private List<Employee> employees;
 
     public Long getId() {
         return id;

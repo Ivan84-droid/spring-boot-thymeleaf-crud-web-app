@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
         public String showNewEmployeeForm(Model model) {
             Employee employee = new Employee();
             model.addAttribute("employee", employee);
-            model.addAttribute("company", companyService.getAllCompanies() );
+            model.addAttribute("companies", companyService.getAllCompanies() );
             return "new_employee";
         }
         @GetMapping ("/showNewCompanyForm")
@@ -44,10 +44,10 @@ import org.springframework.web.bind.annotation.*;
             return "redirect:/";
         }
         @GetMapping("/showFormForUpdate/{id}")
-        public String showFormForUpdate(@PathVariable(value = "id") long userid, Model model) {
-            Employee employee = employeeService.getEmployeeById(userid);
+        public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+            Employee employee = employeeService.getEmployeeById(id);
             model.addAttribute("employee", employee);
-            model.addAttribute("company", companyService.getAllCompanies());
+            model.addAttribute("companies", companyService.getAllCompanies());
             return "update_employee";
         }
         @GetMapping("/deleteEmployee/{id}")

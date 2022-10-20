@@ -16,25 +16,24 @@
           method="POST">
 
     <input th:field="*{id}" type="hidden"/>
-    Titul
+   Academic degree
     <input class="form-control mb-4 col-4" th:field="*{academicDegree}" type="text">
-    Meno
+    First Name
     <input class="form-control mb-4 col-4" th:field="*{firstName}" type="text">
-    Priezvisko
+    Last Name
     <input class="form-control mb-4 col-4" th:field="*{lastName}" type="text">
-    Titul
+    Postgraduate Degree
     <input class="form-control mb-4 col-4" th:field="*{postgraduateDegree}" type="text">
-
+    Company
     <select class="form-control mb-4 col-4" id="exampleSelect1" th:field="*{company.id}">
-        <option value="0">Company</option>
-        <option th:each="com:${companies}" th:value="${co.id}" th:text="${co.name}" >      </option>
+        <option value="0">Companies</option>
+        <option th:each="co:${companies}" th:value="${co.id}" th:text="${co.name}" ></option>
     </select>
-    </select>
-    Pracovná pozícia
+    Work Position
     <input class="form-control mb-4 col-4" th:field="*{workPosition}" type="text">
-    Vek
+    Age
     <input class="form-control mb-4 col-4" th:field="*{age}" type="text">
-    Zamestnaný od:
+   Recruiment
     <input class="form-control mb-4 col-4" th:field="*{recruitment}" type="date">
     Email
     <input class="form-control mb-4 col-4" th:field="*{email}" type="text">

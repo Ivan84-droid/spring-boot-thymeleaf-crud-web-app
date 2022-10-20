@@ -32,22 +32,15 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
 
+
     private Company company;
 
-    public Company getCompany() {
-        return company;
+    public Long getId() {
+        return id;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAcademicDegree() {
@@ -56,38 +49,6 @@ public class Employee {
 
     public void setAcademicDegree(String academicDegree) {
         this.academicDegree = academicDegree;
-    }
-
-    public String getPostgraduateDegree() {
-        return postgraduateDegree;
-    }
-
-    public void setPostgraduateDegree(String postgraduateDegree) {
-        this.postgraduateDegree = postgraduateDegree;
-    }
-
-    public String getWorkPosition() {
-        return workPosition;
-    }
-
-    public void setWorkPosition(String workPosition) {
-        this.workPosition = workPosition;
-    }
-
-    public Date getRecruitment() {
-        return recruitment;
-    }
-
-    public void setRecruitment(Date recruitment) {
-        this.recruitment = recruitment;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -106,14 +67,54 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public String getPostgraduateDegree() {
+        return postgraduateDegree;
+    }
+
+    public void setPostgraduateDegree(String postgraduateDegree) {
+        this.postgraduateDegree = postgraduateDegree;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getWorkPosition() {
+        return workPosition;
+    }
+
+    public void setWorkPosition(String workPosition) {
+        this.workPosition = workPosition;
+    }
+
+    public Date getRecruitment() {
+        return recruitment;
+    }
+
+    public void setRecruitment(Date recruitment) {
+        this.recruitment = recruitment;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
+
 
 

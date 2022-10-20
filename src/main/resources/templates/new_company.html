@@ -9,18 +9,18 @@
 </head>
 <body>
 <div class="container p-3 my-3 bg-dark text-white">
-  <h1>Systém na správu zamestnancov</h1>
+  <h1>Employee Management System</h1>
   <hr>
-  <h2>Nové pracovisko</h2>
+  <h2>New company</h2>
 
   <form action="#" th:action="@{/saveCompany}" th:object="${company}"
         method="POST">
     <input type="text" th:field="*{name}"
-           placeholder="Názov firmy" class="form-control mb-4 col-4">
-    <button type="submit" class="btn btn-info col-2">Ulož firmu</button>
+           placeholder="Name Company" class="form-control mb-4 col-4">
+    <button type="submit" class="btn btn-info col-2">Save company</button>
   </form>
   <hr>
-  <a class="text-danger" th:href = "@{/}"> Návrat na zoznam zamestnancov</a>
+  <a class="text-danger" th:href = "@{/}"> BAck to Employee list</a>
 </div>
 </body>
-</html>html>
+</html>

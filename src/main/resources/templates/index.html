@@ -14,7 +14,6 @@
         }
     }
 </script>
-
 </head>
 <body>
 <div class="container text-center">
@@ -45,13 +44,13 @@
                 <td th:text="${employee.firstName}"></td>
                 <td th:text="${employee.lastName}"></td>
                 <td th:text="${employee.postgraduateDegree}"></td>
+                <td th:text="${employee.company.name}"></td>
                 <td th:text="${employee.workPosition}"></td>
                 <td th:text="${employee.age}"></td>
                 <td th:text="${#dates.format(employee.recruitment, 'dd-MM-yyyy')}"></td>
                 <td th:text="${employee.email}"></td>
-                <td ></td>
-                <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
-                    <a th:attr="onclick=|openPopup('${employee.id}')|"class="btn btn-primary btn-sm mb-3">Delete</a>
+                <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-success">Update</a>
+                     <a th:attr="onclick=|openPopup('${employee.id}')|" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>
