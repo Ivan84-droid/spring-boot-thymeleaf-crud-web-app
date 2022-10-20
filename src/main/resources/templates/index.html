@@ -3,36 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Management System</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css"
+          integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+
 </head>
+<script>
+    function openPopup(id){
+        let confirmAction = confirm("Are you sure to delete this employee?");
+        if (confirmAction) {
+          window.location = '/deleteEmployee/'+id;
+        }
+    }
+</script>
 <body>
     <div class="container my-2">
-        <!-- @ reprezentuje root webovu adresu aplikacie -->
         <h1>Zoznam všetkých zamestnancov</h1>
-        <a th:href="@{/showNewEmployeeForm}" button type="button" class="btn btn-info"> Pridaj zamestnanca </a>
+        <a th:href="@{/showNewEmployeeForm}" button type="button" class="btn btn-info"> Add employee </a>
+        <a th:href="@{/showNewCompanyForm}" button type="button" class="btn btn-info"> Add company </a>
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
             <tr>
-                <th> Krstné meno zamestnanca</th>
-                <th> Priezvisko zamestnanca</th>
-                <th> Email zamestnanca</th>
-                <th>Actions</th>
+                <th> Academic Degree </th>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> Postgraduate Degree </th>
+                <th> Workplace </th>
+                <th> Work Position</th>
+                <th> Age </th>
+                <th> Recruitment from  </th>
+                <th> Email </th>
+                <th> Actions </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="employee:${listEmployees}">
+                <td th:text="${employee.academicDegree}"></td>
                 <td th:text="${employee.firstName}"></td>
                 <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.postgraduateDegree}"></td>
+                <td th:text="${employee.workplace.name}"></td>
+                <td th:text="${employee.workPosition}"></td>
+                <td th:text="${employee.age}"></td>
+                <td th:text="${#dates.format(employee.recruitment, 'dd-MM-yyyy')}"></td>
                 <td th:text="${employee.email}"></td>
-                <td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Aktualizovať</a>
-                    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"class ="btn btn-danger">Delete</a>
+                <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
+                    <a class="btn btn-danger btn-sm mb-3" th:attr="onclick=|openPopup('${employee.id}')|">Delete</a>
                 </td>
             </tr>
-        </tbody>
-    </table>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
-</div>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
